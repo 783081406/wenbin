@@ -112,13 +112,13 @@
         </div>
         <ul class="MenuLevel2">
             <li class="level2 level2Style">
-                <a target="right" href="boardList.html">活动汇总</a>
+                <a target="right" href="#">活动汇总</a>
             </li>
             <li class="level2 level2Style">
-                <a target="right" href="cuisineList.html">活动申述</a>
+                <a target="right" href="#">活动申述</a>
             </li>
             <li class="level2 level2Style">
-                <a target="right" href="cuisineList.html">修改密码</a>
+                <a target="right" href="#">修改密码</a>
             </li>
         </ul>
     </li>
@@ -129,10 +129,10 @@
         </div>
         <ul class="MenuLevel2">
             <li class="level2 level2Style">
-                <a target="right" href="boardList.html">干部录入</a>
+                <a target="right" href="cadreEntry.jsp">干部录入</a>
             </li>
             <li class="level2 level2Style">
-                <a target="right" href="cuisineList.html">活动信息</a>
+                <a target="right" href="#">活动信息</a>
             </li>
         </ul>
     </li>
