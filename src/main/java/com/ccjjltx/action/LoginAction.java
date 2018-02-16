@@ -29,7 +29,7 @@ public class LoginAction extends ActionSupport {
     private String result;
     //得到UserDAO类
     @Resource(name = "userDao")
-    private UserDao UserDao;
+    private UserDao userDao;
 
     public String getUsername() {
         return username;
@@ -62,7 +62,7 @@ public class LoginAction extends ActionSupport {
      */
     public String checkForntLogin() {
         if (getUsername() != null && getPassword() != null) {
-            int iResult = UserDao.checkUser(getUsername(), getPassword());
+            int iResult = userDao.checkUser(getUsername(), getPassword());
             switch (iResult) {
                 case 1:
                     setError("用户名错误！");
