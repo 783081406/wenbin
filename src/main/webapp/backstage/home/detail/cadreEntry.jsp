@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -18,11 +19,10 @@
     <meta charset="utf-8">
     <meta name="description" content="干部录入">
     <meta name="author" content="ccj">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script type="text/javascript" src="style/js/jquery.js"></script>
-    <script type="text/javascript" src="style/js/page_common.js"></script>
-    <link href="style/css/common_style_blue.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="style/css/index_1.css"/>
+    <script type="text/javascript" src="<%=basePath %>backstage/home/detail/style/js/jquery.js"></script>
+    <script type="text/javascript" src="<%=basePath %>backstage/home/detail/style/js/page_common.js"></script>
+    <link href="<%=basePath %>backstage/home/detail/style/css/common_style_blue.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath %>backstage/home/detail/style/css/index_1.css"/>
 </head>
 <body>
 
@@ -31,7 +31,8 @@
     <div id="TitleArea_Head"></div>
     <div id="TitleArea_Title">
         <div id="TitleArea_Title_Content">
-            <img border="0" width="13" height="13" src="style/images/title_arrow.gif"/> 干部录入
+            <img border="0" width="13" height="13"
+                 src="<%=basePath %>backstage/home/detail/style/images/title_arrow.gif"/> 干部录入
         </div>
     </div>
     <div id="TitleArea_End"></div>
@@ -62,18 +63,19 @@
         </thead>
         <!--显示数据列表 -->
         <tbody id="TableData">
-
-        <tr class="TableDetail1">
-            <td align="center">1&nbsp;</td>
-            <td align="center"> 222&nbsp;</td>
-            <td align="center">3333</td>
-            <td align="center">44444</td>
-            <td>
-                <a href="/wirelessplatform/board.html?method=update&id=1&isBook=0" class="FunctionButton">123</a>
-                <a href="/wirelessplatform/board.html?method=delete&id=1" onClick="return delConfirm();"
-                   class="FunctionButton">删除</a>
-            </td>
-        </tr>
+        <s:iterator value="result" status="si">
+            <tr class="TableDetail1">
+                <td align="center"><s:property value="#si.index"/>&nbsp;</td>
+                <td align="center"><s:property value="name"/>&nbsp;</td>
+                <td align="center"><s:property value="username"/></td>
+                <td align="center"><s:property value="password"/></td>
+                <td>
+                    <a href="" class="FunctionButton">更新</a>
+                    <a href="/wirelessplatform/board.html?method=delete&id=1" onClick="return delConfirm();"
+                       class="FunctionButton">删除</a>
+                </td>
+            </tr>
+        </s:iterator>
         </tbody>
     </table>
 
