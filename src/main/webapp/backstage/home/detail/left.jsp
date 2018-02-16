@@ -108,7 +108,7 @@
     <li class="level1">
         <div onClick="menuClick(this);" class="level1Style">
             <img src="style/images/func20001.gif" class="Icon"/>
-            干事职权
+            通用功能
         </div>
         <ul class="MenuLevel2">
             <li class="level2 level2Style">
@@ -116,6 +116,9 @@
             </li>
             <li class="level2 level2Style">
                 <a target="right" href="cuisineList.html">活动申述</a>
+            </li>
+            <li class="level2 level2Style">
+                <a target="right" href="cuisineList.html">修改密码</a>
             </li>
         </ul>
     </li>
@@ -129,7 +132,7 @@
                 <a target="right" href="boardList.html">干部录入</a>
             </li>
             <li class="level2 level2Style">
-                <a target="right" href="cuisineList.html">组织活动</a>
+                <a target="right" href="cuisineList.html">活动信息</a>
             </li>
         </ul>
     </li>
