@@ -20,4 +20,14 @@
             <result name="success" type="redirect">/backstage/home/index.jsp</result>
         </action>
     </package>
+
+    <!--后端》》干部录入-->
+    <package name="cadreentry" namespace="/cadreentry" extends="struts-default">
+        <action name="getAllUser" class="cadreEntryAction" method="getAllUser">
+            <result name="success">/backstage/home/detail/cadreEntry.jsp</result>
+        </action>
+    </package>
+
+
+
 </struts>
