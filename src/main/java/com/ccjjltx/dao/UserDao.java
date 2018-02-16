@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by ccjjltx on 2018/2/15.
@@ -51,6 +52,18 @@ public class UserDao {
             return 2;
         }
         return 3;
+    }
+
+    /**
+     * 得到所有的User
+     *
+     * @return 返回所有的User
+     */
+    public List<User> getAllUser() {
+        Session session = factory.getCurrentSession();
+        String hql = "from User user";
+        Query query = session.createQuery(hql);
+        return (List<User>) query.list();
     }
 
 
