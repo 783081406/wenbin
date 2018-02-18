@@ -2,7 +2,6 @@ package com.ccjjltx.dao;
 
 import com.ccjjltx.domain.Activity;
 import com.ccjjltx.domain.Grade;
-import com.ccjjltx.domain.User;
 import com.ccjjltx.util.ToString;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,7 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.*;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by ccjjltx on 2018/2/18.
@@ -48,24 +51,67 @@ public class GradeDao {
      * @param aid Activity主键
      */
     public void deleteAid(int aid) {
-        Session session = factory.getCurrentSession();
-        String sql = "DELETE FROM grade WHERE aid=" + aid;
-        session.createSQLQuery(sql);
+        try {
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("jdbc.properties");
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            String URL = properties.getProperty("url").trim();
+            String USER = properties.getProperty("user").trim();
+            String PASSWORD = properties.getProperty("password").trim();
+            Class.forName("com.mysql.jdbc.Driver");//1.加载驱动程序
+            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            String sql = "DELETE FROM grade WHERE aid=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, aid);
+            ps.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
-     * 保存更新
+     * 保存修改
      *
-     * @param attendUsers 人员id
-     * @param activity    活动信息实例化
+     * @param attendUsers 用户id
+     * @param aid         活动项目id
      */
-    public void saveUpdate(List<String> attendUsers, Activity activity) {
-        Session session = factory.getCurrentSession();
-        for (String attendUser : attendUsers) {
-            Grade grade = new Grade();
-            grade.setUser(userDao.searchUser(Integer.parseInt(attendUser)));
-            grade.setActivity(activity);
-            session.save(grade);
+    public void saveUpdate(List<String> attendUsers, int aid) {
+        for (String user : attendUsers) {
+            save(Integer.parseInt(user), aid);
+        }
+    }
+
+    /**
+     * 增加，保存
+     *
+     * @param id
+     * @param aid
+     */
+    private void save(int id, int aid) {
+        try {
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("jdbc.properties");
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            String URL = properties.getProperty("url").trim();
+            String USER = properties.getProperty("user").trim();
+            String PASSWORD = properties.getProperty("password").trim();
+            Class.forName("com.mysql.jdbc.Driver");//1.加载驱动程序
+            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            String sql = "INSERT INTO grade (id, aid) VALUES (?, ?);";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.setInt(2, aid);
+            ps.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
