@@ -72,19 +72,11 @@
 
     <!--后端>>参与活动的人员相关-->
     <package name="grade" namespace="/grade" extends="struts-default,json-default">
-        <!--参与人员-->
-        <action name="getAttendUser" class="gradeAction" method="getAttendUser">
+        <action name="*" class="gradeAction" method="{1}">
             <result name="success" type="json">
                 <param name="root">result</param>
             </result>
         </action>
-        <!--未参与人员-->
-        <action name="getNoAttendUser" class="gradeAction" method="getNoAttendUser">
-            <result name="success" type="json">
-                <param name="root">result</param>
-            </result>
-        </action>
-
     </package>
 
 </struts>
