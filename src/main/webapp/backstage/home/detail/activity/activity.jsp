@@ -23,6 +23,35 @@
     <script type="text/javascript" src="<%=basePath %>backstage/home/detail/style/js/page_common.js"></script>
     <link href="<%=basePath %>backstage/home/detail/style/css/common_style_blue.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="<%=basePath %>backstage/home/detail/style/css/index_1.css"/>
+    <!--人员的弹出框css-->
+    <style>
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=88);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 30%;
+            height: 50%;
+            padding: 20px;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
 
@@ -72,7 +101,9 @@
                 <td align="center"><s:property value="etime"/></td>
                 <td align="center"><s:property value="pdfpath"/></td>
                 <td>
-                    <a href='<%=basePath %>cadreentry/updateUser' class="FunctionButton">人员</a>
+                    <a href="javascript:void(0)" class="FunctionButton"
+                       onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';initccj(
+                           <s:property value="aid"/>)">人员</a>
                     <a href='<%=basePath %>cadreentry/updateUser' class="FunctionButton">评分</a>
                     <a href='<%=basePath %>cadreentry/deleteUser'
                        onClick="return delConfirm();"
@@ -88,5 +119,107 @@
         <div class="FunctionButton"><a href="<%=basePath %>cadreentry/addUser">添加</a></div>
     </div>
 </div>
+
+<!--人员弹出框-->
+<div id="light" class="white_content">左边为未参与人员,右边为参与本次活动人员
+    <form method="post" name="myform">
+        <table border="0" width="300">
+            <tr>
+                <td width="40%">
+                    <select style="WIDTH:100%" multiple id="list1" name="list1" size="12"
+                            ondblclick="moveOption(document.myform.list1, document.myform.list2)">
+                    </select>
+                </td>
+                <td width="20%" align="center">
+                    <input type="button" value=" >> "
+                           onclick="moveOption(document.myform.list1, document.myform.list2)">
+                    <br/>
+                    <br/>
+                    <input type="button" value=" << "
+                           onclick="moveOption(document.myform.list2, document.myform.list1)">
+                </td>
+                <td width="40%">
+                    <select style="WIDTH:100%" multiple id="list2" name="list2" size="12"
+                            ondblclick="moveOption(document.myform.list2, document.myform.list1)">
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br/>
+    <a href="javascript:void(0)" class="FunctionButton" onclick="submitccj()">确定</a>
+    <a href="javascript:void(0)" class="FunctionButton"
+       onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">取消</a>
+</div>
+<div id="fade" class="black_overlay"></div>
+
+<!--人员选择js-->
+<script language="JavaScript">
+    function moveOption(e1, e2) {
+        try {
+            for (var i = 0; i < e1.options.length; i++) {
+                if (e1.options[i].selected) {
+                    var e = e1.options[i];
+                    e2.options.add(new Option(e.text, e.value));
+                    e1.remove(i);
+                    ii = i - 1
+                }
+            }
+            document.myform.city.value = getvalue(document.myform.list2);
+        }
+        catch (e) {
+        }
+    }
+
+    function getvalue(geto) {
+        var allvalue = "";
+        for (var i = 0; i < geto.options.length; i++) {
+            allvalue += geto.options[i].value + ",";
+        }
+        return allvalue;
+    }
+
+    var thisaid;
+    //初始化弹出框的数据
+    function initccj(aid) {
+        thisaid=aid;
+        $('#list1').empty();
+        //获得为参与项目的人员
+        $.ajax({
+            url: "<%=basePath %>grade/getNoAttendUser?aid=" + aid,
+            type: "get",
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    $("#list1").append("<option value='" + value.id + "'>" + value.name + "</option>");//新增
+                });
+            }
+        });
+        $('#list2').empty();
+        //获得参与项目的人员
+        $.ajax({
+            url: "<%=basePath %>grade/getAttenUser?aid=" + aid,
+            type: "get",
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (key, value) {
+                    $("#list2").append("<option value='" + value.id + "'>" + value.name + "</option>");//新增
+                });
+            }
+        });
+    }
+
+    //提交人员名单的数据
+    function submitccj(){
+        var array = new Array();  //定义数组
+        $("#list2 option").each(function(){  //遍历所有option
+            var txt = $(this).val();   //获取option值
+            if(txt!=''){
+                array.push(txt);  //添加到数组中
+            }
+        })
+        alert(array);
+    }
+</script>
 </body>
 </html>
