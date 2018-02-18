@@ -38,14 +38,6 @@
     <div id="TitleArea_End"></div>
 </div>
 
-<!-- 过滤条件 -->
-<div id="QueryArea">
-    <form action="<%=basePath %>cadreentry/searchUser" method="get">
-        <input type="text" name="name" placeholder="请输入姓名">
-        <input type="submit" value="搜索">
-    </form>
-</div>
-
 <!-- 主内容区域（数据列表或表单显示） -->
 <div id="MainArea">
     <table class="MainArea_Content" cellspacing="0" cellpadding="0">
@@ -53,38 +45,26 @@
         <thead>
         <tr align="center" valign="middle" id="TableTitle">
             <td>编号</td>
-            <td>干部姓名</td>
-            <td>用户名</td>
-            <td>密码</td>
-            <td>类型</td>
+            <td>参与人员名称</td>
+            <td>评分</td>
             <td>操作</td>
         </tr>
         </thead>
         <!--显示数据列表 -->
         <tbody id="TableData">
-        <s:iterator value="result" status="si">
+        <s:iterator value="result2" status="si">
             <tr class="TableDetail1">
                 <td align="center"><s:property value="#si.index"/>&nbsp;</td>
-                <td align="center"><s:property value="name"/>&nbsp;</td>
-                <td align="center"><s:property value="username"/></td>
-                <td align="center"><s:property value="password"/></td>
-                <td align="center"><s:property value="type"/></td>
+                <td align="center"><s:property value="user.name"/>&nbsp;</td>
+                <td align="center"><s:property value="score"/></td>
                 <td>
-                    <a href='<%=basePath %>cadreentry/updateUser?id=<s:property value="id"/>&name=<s:property value="name"/>&username=<s:property value="username"/>&password=<s:property value="password"/>&type=<s:property value="type"/>'
-                       class="FunctionButton">更新</a>
-                    <a href='<%=basePath %>cadreentry/deleteUser?id=<s:property value="id"/>'
-                       onClick="return delConfirm();"
-                       class="FunctionButton">删除</a>
+                    <a href='' class="FunctionButton">更新</a>
+                    <a href='' onClick="return delConfirm();" class="FunctionButton">删除</a>
                 </td>
             </tr>
         </s:iterator>
         </tbody>
     </table>
-
-    <!-- 其他功能超链接 -->
-    <div id="TableTail" align="center">
-        <div class="FunctionButton"><a href="<%=basePath %>cadreentry/addUser">添加</a></div>
-    </div>
 </div>
 </body>
 </html>
