@@ -69,7 +69,7 @@
 
 <!-- 过滤条件 -->
 <div id="QueryArea">
-    <form action="<%=basePath %>cadreentry/searchUser" method="get">
+    <form action="<%=basePath %>activity/search" method="post">
         <input type="text" name="name" placeholder="请输入活动名称">
         <input type="submit" value="搜索">
     </form>
@@ -101,6 +101,7 @@
                 <td align="center"><s:property value="etime"/></td>
                 <td align="center"><s:property value="pdfpath"/></td>
                 <td>
+                    <a href='<%=basePath %>cadreentry/updateUser' class="FunctionButton">更新</a>
                     <a href="javascript:void(0)" class="FunctionButton"
                        onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';initccj(
                            <s:property value="aid"/>)">人员</a>
