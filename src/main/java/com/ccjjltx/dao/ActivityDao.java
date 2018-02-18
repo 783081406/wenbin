@@ -60,4 +60,14 @@ public class ActivityDao {
         return (List<Activity>) query.list();
     }
 
+    /**
+     * 更新
+     *
+     * @param activity Activity修改实例化
+     */
+    public void update(Activity activity) {
+        Session session = factory.getCurrentSession();
+        session.update(activity);
+    }
+
 }
