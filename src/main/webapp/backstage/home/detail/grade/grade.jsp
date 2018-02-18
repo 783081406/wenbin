@@ -58,7 +58,8 @@
                 <td align="center"><s:property value="user.name"/>&nbsp;</td>
                 <td align="center"><s:property value="score"/></td>
                 <td>
-                    <a href='' class="FunctionButton">更新</a>
+                    <a href='<%=basePath %>grade/getThisActivityUpdate?gid=<s:property value="gid"/>&name=<s:property value="user.name"/>&score=<s:property value="score"/>'
+                       class="FunctionButton">更新</a>
                     <a href='' onClick="return delConfirm();" class="FunctionButton">删除</a>
                 </td>
             </tr>
