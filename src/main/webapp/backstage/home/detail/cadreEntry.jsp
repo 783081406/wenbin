@@ -58,6 +58,7 @@
             <td>干部姓名</td>
             <td>用户名</td>
             <td>密码</td>
+            <td>类型</td>
             <td>操作</td>
         </tr>
         </thead>
@@ -69,9 +70,10 @@
                 <td align="center"><s:property value="name"/>&nbsp;</td>
                 <td align="center"><s:property value="username"/></td>
                 <td align="center"><s:property value="password"/></td>
+                <td align="center"><s:property value="type"/></td>
                 <td>
-                    <a href="" class="FunctionButton">更新</a>
-                    <a href="/wirelessplatform/board.html?method=delete&id=1" onClick="return delConfirm();"
+                    <a href='<%=basePath %>cadreentry/updateUser?id=<s:property value="id"/>&name=<s:property value="name"/>&username=<s:property value="username"/>&password=<s:property value="password"/>&type=<s:property value="type"/>' class="FunctionButton">更新</a>
+                    <a href='' onClick="return delConfirm();"
                        class="FunctionButton">删除</a>
                 </td>
             </tr>
