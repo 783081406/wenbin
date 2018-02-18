@@ -182,7 +182,7 @@
     var thisaid;
     //初始化弹出框的数据
     function initccj(aid) {
-        thisaid=aid;
+        thisaid = aid;
         $('#list1').empty();
         //获得为参与项目的人员
         $.ajax({
@@ -198,7 +198,7 @@
         $('#list2').empty();
         //获得参与项目的人员
         $.ajax({
-            url: "<%=basePath %>grade/getAttenUser?aid=" + aid,
+            url: "<%=basePath %>grade/getAttendUser?aid=" + aid,
             type: "get",
             dataType: 'json',
             success: function (data) {
@@ -210,15 +210,27 @@
     }
 
     //提交人员名单的数据
-    function submitccj(){
+    function submitccj() {
+        alert("cc");
         var array = new Array();  //定义数组
-        $("#list2 option").each(function(){  //遍历所有option
+        $("#list2 option").each(function () {  //遍历所有option
             var txt = $(this).val();   //获取option值
-            if(txt!=''){
+            if (txt != '') {
                 array.push(txt);  //添加到数组中
             }
-        })
+        });
         alert(array);
+        //提交数据
+        $.ajax({
+            url: "<%=basePath %>grade/getAttendUser?aid=" + thisaid + "&attendUser=" + array,
+            type: "get",
+            dataType: 'json',
+            success: function (data) {
+                alert("修改成功");
+                document.getElementById('light').style.display = 'none';
+                document.getElementById('fade').style.display = 'none'
+            }
+        });
     }
 </script>
 </body>
