@@ -36,6 +36,10 @@ public class GradeAction extends ActionSupport {
     private List<String> attendUsers;//接受前台传输过来的参与人员名单
     private List<Grade> result2;//返回list数据
 
+    private int gid;
+    private String name;
+    private String score;
+
     public JSONArray getResult() {
         return result;
     }
@@ -66,6 +70,30 @@ public class GradeAction extends ActionSupport {
 
     public void setResult2(List<Grade> result2) {
         this.result2 = result2;
+    }
+
+    public int getGid() {
+        return gid;
+    }
+
+    public void setGid(int gid) {
+        this.gid = gid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 
     /**
@@ -136,6 +164,29 @@ public class GradeAction extends ActionSupport {
         Activity db_activity = activityDao.search(getAid());
         //充填数据
         setResult2(gradeDao.getThisActivity(db_activity));
+        return SUCCESS;
+    }
+
+    /**
+     * 评分页面
+     *
+     * @return Success
+     */
+    public String getThisActivityUpdate() {
+        return SUCCESS;
+    }
+
+    /**
+     * 更新评分
+     *
+     * @return Success
+     */
+    public String getThisActivitySaveUpdate() {
+        Grade grade = gradeDao.search(getGid());
+        //修改分数
+        grade.setScore(getScore());
+        //更新操作
+        gradeDao.update(grade);
         return SUCCESS;
     }
 
