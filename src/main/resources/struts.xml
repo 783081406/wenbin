@@ -106,6 +106,16 @@
         <action name="getThisActivity" class="gradeAction" method="getThisActivity">
             <result name="success">/backstage/home/detail/grade/grade.jsp</result>
         </action>
+        <!--更新评分页面-->
+        <action name="getThisActivityUpdate" class="gradeAction" method="getThisActivityUpdate">
+            <result name="success">/backstage/home/detail/grade/gradeUpdate.jsp</result>
+        </action>
+        <!--更新评分操作-->
+        <action name="getThisActivitySaveUpdate" class="gradeAction" method="getThisActivitySaveUpdate">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getThisActivity</param>
+            </result>
+        </action>
         <!--返回json -->
         <action name="*" class="gradeAction" method="{1}">
             <result name="success" type="json">
