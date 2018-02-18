@@ -159,4 +159,17 @@ public class ActivityAction extends ActionSupport {
         activityDao.saveAdd(activity);
         return SUCCESS;
     }
+
+    /**
+     * 删除操作
+     *
+     * @return Success
+     */
+    public String delete() {
+        //得到需要删除的实例化
+        Activity db_activity = activityDao.search(getAid());
+        //执行删除操作
+        activityDao.delete(db_activity);
+        return SUCCESS;
+    }
 }
