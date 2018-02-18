@@ -41,6 +41,19 @@
                 <param name="actionName">getAllUser</param>
             </result>
         </action>
+        <!--增加页面-->
+        <action name="addUser" class="cadreEntryAction" method="addUser">
+            <result name="success">/backstage/home/detail/cadreEntry/cadreEntryAdd.jsp</result>
+        </action>
+        <!--增加操作-->
+        <action name="saveAdd" class="cadreEntryAction" method="saveAdd">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getAllUser</param>
+            </result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">addUser</param>
+            </result>
+        </action>
     </package>
 
 </struts>
