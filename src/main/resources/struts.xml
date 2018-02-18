@@ -82,7 +82,16 @@
                 <param name="actionName">getAll</param>
             </result>
         </action>
-
+        <!--新增页面-->
+        <action name="add" class="activityAction" method="add">
+            <result name="success">/backstage/home/detail/activity/activityAdd.jsp</result>
+        </action>
+        <!--新增操作-->
+        <action name="saveAdd" class="activityAction" method="saveAdd">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getAll</param>
+            </result>
+        </action>
 
 
 
