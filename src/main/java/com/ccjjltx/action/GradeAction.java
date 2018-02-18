@@ -191,4 +191,14 @@ public class GradeAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /**
+     * 删除操作
+     *
+     * @return Success
+     */
+    public String getThisActivitydelete() {
+        gradeDao.delete(getGid());
+        return SUCCESS;
+    }
+
 }
