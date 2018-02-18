@@ -134,4 +134,33 @@ public class CadreEntryAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /**
+     * 增加信息页面
+     *
+     * @return SUCCESS
+     */
+    public String addUser() {
+        return SUCCESS;
+    }
+
+    /**
+     * 增加操作
+     *
+     * @return Success或Error
+     */
+    public String saveAdd() {
+        try {
+            int type_temp = Integer.parseInt(getType());//类型只能是1或者2
+            if (type_temp == 1 || type_temp == 2) {
+                User user = new User(getName(), getUsername(), getPassword(), type_temp);
+                if (userDao.addUser(user) == 2) {
+                    return SUCCESS;
+                }
+            }
+        } catch (NumberFormatException e) {
+            return ERROR;
+        }
+        return ERROR;
+    }
+
 }
