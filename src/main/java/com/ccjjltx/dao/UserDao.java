@@ -49,6 +49,19 @@ public class UserDao {
     }
 
     /**
+     * 根据用户名搜索用户（支持模糊搜索）
+     *
+     * @param name 用户名
+     * @return List列表
+     */
+    public List<User> searchUser2(String name) {
+        Session session = factory.getCurrentSession();
+        String hql = "from User user where user.name like :name";
+        Query query = session.createQuery(hql).setParameter("name", "%" + name + "%");
+        return (List<User>) query.list();
+    }
+
+    /**
      * 验证用户名密码正确与否
      *
      * @param username User实例
