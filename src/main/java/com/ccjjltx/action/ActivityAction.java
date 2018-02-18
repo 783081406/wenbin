@@ -132,4 +132,31 @@ public class ActivityAction extends ActionSupport {
         activityDao.update(db_activity);
         return SUCCESS;
     }
+
+    /**
+     * 增加
+     *
+     * @return Success
+     */
+    public String add() {
+        return SUCCESS;
+    }
+
+    /**
+     * 增加  保存
+     *
+     * @return Success
+     */
+    public String saveAdd() {
+        Activity activity = new Activity();
+        //获取前端过来的数据
+        activity.setName(getName());
+        activity.setPlace(getPlace());
+        activity.setStime(getStime());
+        activity.setEtime(getEtime());
+        activity.setPdfpath(getEtime());
+        //执行保存操作
+        activityDao.saveAdd(activity);
+        return SUCCESS;
+    }
 }
