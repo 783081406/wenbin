@@ -39,7 +39,7 @@ public class GradeDao {
      */
     public String attendUser(int aid) {
         Session session = factory.getCurrentSession();
-        String hql = "select gid from grade where aid=" + aid;
+        String hql = "select id from grade where aid=" + aid;
         Query query = session.createSQLQuery(hql);
         List<Integer> list = (List<Integer>) query.list();
         return ToString.parse(list);
