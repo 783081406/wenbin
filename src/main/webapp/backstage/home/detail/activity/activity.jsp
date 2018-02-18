@@ -101,7 +101,8 @@
                 <td align="center"><s:property value="etime"/></td>
                 <td align="center"><s:property value="pdfpath"/></td>
                 <td>
-                    <a href='<%=basePath %>cadreentry/updateUser' class="FunctionButton">更新</a>
+                    <a href='<%=basePath %>activity/update?aid=<s:property value="aid"/>&name=<s:property value="name"/>&place=<s:property value="place"/>&stime=<s:property value="stime"/>&etime=<s:property value="etime"/>'
+                       class="FunctionButton">更新</a>
                     <a href="javascript:void(0)" class="FunctionButton"
                        onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';initccj(
                            <s:property value="aid"/>)">人员</a>
