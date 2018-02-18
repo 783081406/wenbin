@@ -211,7 +211,6 @@
 
     //提交人员名单的数据
     function submitccj() {
-        alert("cc");
         var array = new Array();  //定义数组
         $("#list2 option").each(function () {  //遍历所有option
             var txt = $(this).val();   //获取option值
@@ -219,10 +218,9 @@
                 array.push(txt);  //添加到数组中
             }
         });
-        alert(array);
         //提交数据
         $.ajax({
-            url: "<%=basePath %>grade/getAttendUser?aid=" + thisaid + "&attendUser=" + array,
+            url: "<%=basePath %>grade/saveUpdate?aid=" + thisaid + "&attendUsers=" + array,
             type: "get",
             dataType: 'json',
             success: function (data) {
