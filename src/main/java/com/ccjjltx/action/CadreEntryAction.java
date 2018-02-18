@@ -89,6 +89,17 @@ public class CadreEntryAction extends ActionSupport {
     }
 
     /**
+     * 搜索框相关功能
+     *
+     * @return List数据
+     */
+    public String searchUser() {
+        //根据搜索框传输过来的名字，从DAO层得到所有相关的数据,之后充填数据到前端
+        setResult(userDao.searchUser2(getName()));
+        return SUCCESS;
+    }
+
+    /**
      * 更新User
      *
      * @return SUCCESS或Error
