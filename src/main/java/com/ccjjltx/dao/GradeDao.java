@@ -148,4 +148,14 @@ public class GradeDao {
         Session session = factory.getCurrentSession();
         session.update(grade);
     }
+
+    /**
+     * 删除操作
+     *
+     * @param gid 主键
+     */
+    public void delete(int gid) {
+        Session session = factory.getCurrentSession();
+        session.delete(search(gid));
+    }
 }

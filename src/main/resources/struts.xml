@@ -117,6 +117,13 @@
                 <param name="aid">${aid}</param>
             </result>
         </action>
+        <!--删除操作-->
+        <action name="getThisActivitydelete" class="gradeAction" method="getThisActivitydelete">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getThisActivity</param>
+                <param name="aid">${aid}</param>
+            </result>
+        </action>
         <!--返回json -->
         <action name="*" class="gradeAction" method="{1}">
             <result name="success" type="json">
