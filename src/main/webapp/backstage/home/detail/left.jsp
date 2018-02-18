@@ -134,6 +134,9 @@
             <li class="level2 level2Style">
                 <a target="right" href="#">活动信息</a>
             </li>
+            <li class="level2 level2Style">
+                <a target="right" href="#">申请处理</a>
+            </li>
         </ul>
     </li>
 </ul>
