@@ -126,4 +126,22 @@ public class UserDao {
         return 1;
     }
 
+    /**
+     * 根据id，得到User，进而删除User
+     *
+     * @param id User的id号，使用get方法根据主键得到User
+     * @return 删除成功得到true，失败返回false
+     */
+    public boolean deleteUser(int id) {
+        Session session = factory.getCurrentSession();
+        User db_user = (User) session.get(User.class, id);
+        boolean result = true;
+        try {
+            //删除操作
+            session.delete(db_user);
+        } catch (HibernateException e) {
+            result = false;
+        }
+        return result;
+    }
 }
