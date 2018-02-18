@@ -50,4 +50,13 @@ public class GradeDaoTest {
         list.add("2");
         gradeDao.saveUpdate(list, 2);
     }
+
+    @Test
+    @Transactional
+    public void testGetThisActivity() {
+        //测试该刚刚的时候，aid为1的数据为两条
+        Activity activity = activityDao.search(1);
+        int result = gradeDao.getThisActivity(activity).size();
+        Assert.assertEquals(2, result);
+    }
 }
