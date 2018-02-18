@@ -114,4 +114,18 @@ public class GradeDao {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 根据Activity，得到同一活动的所有人员以及分数
+     *
+     * @param activity 需要查询的实例化
+     * @return List数据
+     */
+    public List<Grade> getThisActivity(Activity activity) {
+        Session session = factory.getCurrentSession();
+        String hql = "from Grade grade where grade.activity=:activity";
+        Query query = session.createQuery(hql).setParameter("activity", activity);
+        return (List<Grade>) query.list();
+    }
+
 }
