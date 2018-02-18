@@ -144,4 +144,30 @@ public class UserDao {
         }
         return result;
     }
+
+    /**
+     * 参与的项目人员
+     *
+     * @param attend 参与项目的人员
+     * @return List 参与人员
+     */
+    public List<User> attendUser(String attend) {
+        Session session = factory.getCurrentSession();
+        String hql = "From User user where id in(" + attend + ")";
+        Query query = session.createQuery(hql);
+        return (List<User>) query.list();
+    }
+
+    /**
+     * 未参与的项目人员
+     *
+     * @param attend 参与项目的人员
+     * @return List 未参与人员
+     */
+    public List<User> noAttendUser(String attend) {
+        Session session = factory.getCurrentSession();
+        String hql = "From User user where id not in(" + attend + ")";
+        Query query = session.createQuery(hql);
+        return (List<User>) query.list();
+    }
 }
