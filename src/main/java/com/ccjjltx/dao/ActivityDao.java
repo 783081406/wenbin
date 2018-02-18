@@ -70,4 +70,14 @@ public class ActivityDao {
         session.update(activity);
     }
 
+    /**
+     * 保存数据
+     *
+     * @param activity 需要保存的实例化
+     */
+    public void saveAdd(Activity activity) {
+        Session session = factory.getCurrentSession();
+        session.save(activity);
+    }
+
 }
