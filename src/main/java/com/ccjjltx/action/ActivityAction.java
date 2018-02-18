@@ -22,8 +22,8 @@ public class ActivityAction extends ActionSupport {
     //得到UserDAO类
     @Resource(name = "activityDao")
     private ActivityDao activityDao;
-
     private List<Activity> result;//存放所有数据
+    private String name;//搜索框提交过来的名字
 
     public List<Activity> getResult() {
         return result;
@@ -31,6 +31,14 @@ public class ActivityAction extends ActionSupport {
 
     public void setResult(List<Activity> result) {
         this.result = result;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -44,5 +52,13 @@ public class ActivityAction extends ActionSupport {
         return SUCCESS;
     }
 
-
+    /**
+     * 搜索数据
+     *
+     * @return List数据
+     */
+    public String search() {
+        setResult(activityDao.search(getName()));
+        return SUCCESS;
+    }
 }
