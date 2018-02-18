@@ -23,11 +23,20 @@
 
     <!--后端》》干部录入-->
     <package name="cadreentry" namespace="/cadreentry" extends="struts-default">
+        <!--得到所有的User-->
         <action name="getAllUser" class="cadreEntryAction" method="getAllUser">
             <result name="success">/backstage/home/detail/cadreEntry.jsp</result>
         </action>
+        <!--更新页面-->
+        <action name="updateUser" class="cadreEntryAction" method="updateUser">
+            <result name="success">/backstage/home/detail/cadreEntryUpdate.jsp</result>
+        </action>
+        <!--更新操作-->
+        <action name="saveUpdate" class="cadreEntryAction" method="saveUpdate">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getAllUser</param>
+            </result>
+        </action>
     </package>
-
-
 
 </struts>
