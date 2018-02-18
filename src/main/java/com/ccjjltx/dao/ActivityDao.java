@@ -47,4 +47,17 @@ public class ActivityDao {
 
     }
 
+    /**
+     * 根据项目名得到List数据
+     *
+     * @param name 项目名
+     * @return List数据
+     */
+    public List<Activity> search(String name) {
+        Session session = factory.getCurrentSession();
+        String hql = "From Activity activity where activity.name like :name";
+        Query query = session.createQuery(hql).setParameter("name", "%" + name + "%");
+        return (List<Activity>) query.list();
+    }
+
 }
