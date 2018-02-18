@@ -35,5 +35,16 @@ public class ActivityDao {
         return (List<Activity>) query.list();
     }
 
+    /**
+     * 根据aid搜索
+     *
+     * @param aid 主键
+     * @return 实例化
+     */
+    public Activity search(int aid) {
+        Session session = factory.getCurrentSession();
+        return (Activity) session.get(Activity.class, aid);
+
+    }
 
 }
