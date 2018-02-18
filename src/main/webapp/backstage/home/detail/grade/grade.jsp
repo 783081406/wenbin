@@ -60,7 +60,7 @@
                 <td>
                     <a href='<%=basePath %>grade/getThisActivityUpdate?aid=<s:property value="activity.aid"/>&gid=<s:property value="gid"/>&name=<s:property value="user.name"/>&score=<s:property value="score"/>'
                        class="FunctionButton">更新</a>
-                    <a href='' onClick="return delConfirm();" class="FunctionButton">删除</a>
+                    <a href='<%=basePath %>grade/getThisActivitydelete?aid=<s:property value="activity.aid"/>&gid=<s:property value="gid"/>' onClick="return delConfirm();" class="FunctionButton">删除</a>
                 </td>
             </tr>
         </s:iterator>
