@@ -111,9 +111,9 @@ public class GradeAction extends ActionSupport {
         if (getAttendUsers() == null) {//如果没有数据，表示全部清空，不用执行下面的方法体
             return SUCCESS;
         }
-        //得到Activity的数据
-        Activity db_Activity = activityDao.search(getAid());
-        gradeDao.saveUpdate(getAttendUsers(), db_Activity);
+        gradeDao.saveUpdate(getAttendUsers(), 2);
+        result = new JSONArray();
+        result.add("1");
         return SUCCESS;
     }
 
