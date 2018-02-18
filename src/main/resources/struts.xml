@@ -102,6 +102,11 @@
 
     <!--后端>>参与活动的人员相关-->
     <package name="grade" namespace="/grade" extends="struts-default,json-default">
+        <!--评分页面-->
+        <action name="getThisActivity" class="gradeAction" method="getThisActivity">
+            <result name="success">/backstage/home/detail/grade/grade.jsp</result>
+        </action>
+        <!--返回json -->
         <action name="*" class="gradeAction" method="{1}">
             <result name="success" type="json">
                 <param name="root">result</param>
