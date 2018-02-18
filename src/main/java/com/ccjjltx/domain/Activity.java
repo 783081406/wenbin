@@ -19,8 +19,8 @@ public class Activity implements Serializable {
     private int aid;
     private String name;
     private String place;
-    private Date stime;
-    private Date etime;
+    private String stime;
+    private String etime;
     private String pdfpath;
 
     public Activity() {
@@ -50,19 +50,19 @@ public class Activity implements Serializable {
         this.place = place;
     }
 
-    public Date getStime() {
+    public String getStime() {
         return stime;
     }
 
-    public void setStime(Date stime) {
+    public void setStime(String stime) {
         this.stime = stime;
     }
 
-    public Date getEtime() {
+    public String getEtime() {
         return etime;
     }
 
-    public void setEtime(Date etime) {
+    public void setEtime(String etime) {
         this.etime = etime;
     }
 
