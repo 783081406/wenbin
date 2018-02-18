@@ -50,7 +50,7 @@ public class GradeAction extends ActionSupport {
      *
      * @return json数据
      */
-    public String getAttenUser() {
+    public String getAttendUser() {
         List<User> list = userDao.attendUser(gradeDao.attendUser(getAid()));
         if (list == null) {
             result = null;
