@@ -108,5 +108,22 @@ public class UserDao {
         return result;
     }
 
+    /**
+     * 增加User
+     *
+     * @param user User用户
+     * @return 1或者2, 1表示失败,2表示成功
+     */
+    public int addUser(User user) {
+        Session session = factory.getCurrentSession();
+        //得到唯一结果，如果结果是null，表示没有相同的用户名，否则表示有相同的用户名返回false
+        User db_user = searchUser(user.getUsername());
+        if (db_user == null) {//不允许存在相同的用户名
+            //持久化user1实例
+            session.save(user);
+            return 2;
+        }
+        return 1;
+    }
 
 }
