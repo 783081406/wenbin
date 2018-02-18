@@ -4,6 +4,7 @@ import com.ccjjltx.dao.ActivityDao;
 import com.ccjjltx.dao.GradeDao;
 import com.ccjjltx.dao.UserDao;
 import com.ccjjltx.domain.Activity;
+import com.ccjjltx.domain.Grade;
 import com.ccjjltx.domain.User;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
@@ -33,6 +34,7 @@ public class GradeAction extends ActionSupport {
     private JSONArray result;//返回json数据
     private int aid;//项目主键
     private List<String> attendUsers;//接受前台传输过来的参与人员名单
+    private List<Grade> result2;//返回list数据
 
     public JSONArray getResult() {
         return result;
@@ -56,6 +58,14 @@ public class GradeAction extends ActionSupport {
 
     public void setAttendUsers(List<String> attendUsers) {
         this.attendUsers = attendUsers;
+    }
+
+    public List<Grade> getResult2() {
+        return result2;
+    }
+
+    public void setResult2(List<Grade> result2) {
+        this.result2 = result2;
     }
 
     /**
@@ -114,6 +124,18 @@ public class GradeAction extends ActionSupport {
         gradeDao.saveUpdate(getAttendUsers(), 2);
         result = new JSONArray();
         result.add("1");
+        return SUCCESS;
+    }
+
+    /**
+     * 得到同一个项目所有参与人员分数
+     *
+     * @return List数据
+     */
+    public String getThisActivity() {
+        Activity db_activity = activityDao.search(getAid());
+        //充填数据
+        setResult2(gradeDao.getThisActivity(db_activity));
         return SUCCESS;
     }
 
