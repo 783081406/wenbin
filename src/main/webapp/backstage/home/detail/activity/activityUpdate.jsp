@@ -44,7 +44,7 @@
         <!-- 本段标题（分段标题） -->
         <div class="ItemBlock_Title">
             <img width="4" height="7" border="0" src="<%=basePath %>backstage/home/detail/style/images/item_point.gif">
-            干部信息&nbsp;
+            更新信息&nbsp;
         </div>
         <!-- 本段表单字段 -->
         <div class="ItemBlockBorder">
