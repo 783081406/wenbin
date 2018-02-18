@@ -68,6 +68,10 @@
         <action name="getAll" class="activityAction" method="getAll">
             <result name="success">/backstage/home/detail/activity/activity.jsp</result>
         </action>
+        <!--搜索框-->
+        <action name="search" class="activityAction" method="search">
+            <result name="success">/backstage/home/detail/activity/activity.jsp</result>
+        </action>
     </package>
 
     <!--后端>>参与活动的人员相关-->
