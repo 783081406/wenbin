@@ -40,13 +40,11 @@
 
 <!-- 过滤条件 -->
 <div id="QueryArea">
-    <form action="#" method="get">
-        <input type="hidden" name="method" value="search">
-        <input type="text" name="keyword" title="请输入姓名">
+    <form action="<%=basePath %>cadreentry/searchUser" method="get">
+        <input type="text" name="name" placeholder="请输入姓名">
         <input type="submit" value="搜索">
     </form>
 </div>
-
 
 <!-- 主内容区域（数据列表或表单显示） -->
 <div id="MainArea">
