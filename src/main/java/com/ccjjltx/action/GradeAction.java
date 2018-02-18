@@ -187,6 +187,7 @@ public class GradeAction extends ActionSupport {
         grade.setScore(getScore());
         //更新操作
         gradeDao.update(grade);
+        setAid(getAid());
         return SUCCESS;
     }
 

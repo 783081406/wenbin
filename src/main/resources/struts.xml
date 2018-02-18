@@ -114,6 +114,7 @@
         <action name="getThisActivitySaveUpdate" class="gradeAction" method="getThisActivitySaveUpdate">
             <result name="success" type="redirectAction">
                 <param name="actionName">getThisActivity</param>
+                <param name="aid">${aid}</param>
             </result>
         </action>
         <!--返回json -->
