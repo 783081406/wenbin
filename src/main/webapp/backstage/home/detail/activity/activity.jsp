@@ -107,8 +107,7 @@
                        onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';initccj(
                            <s:property value="aid"/>)">人员</a>
                     <a href='<%=basePath %>cadreentry/updateUser' class="FunctionButton">评分</a>
-                    <a href='<%=basePath %>cadreentry/deleteUser'
-                       onClick="return delConfirm();"
+                    <a href='<%=basePath %>activity/delete?aid=<s:property value="aid"/>' onClick="return delConfirm();"
                        class="FunctionButton">删除</a>
                 </td>
             </tr>
