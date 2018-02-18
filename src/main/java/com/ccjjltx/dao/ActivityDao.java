@@ -80,4 +80,14 @@ public class ActivityDao {
         session.save(activity);
     }
 
+    /**
+     * 删除数据
+     *
+     * @param activity 需要删除的实例化
+     */
+    public void delete(Activity activity) {
+        Session session = factory.getCurrentSession();
+        session.delete(activity);
+    }
+
 }
