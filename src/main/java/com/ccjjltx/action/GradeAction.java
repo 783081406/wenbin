@@ -1,7 +1,9 @@
 package com.ccjjltx.action;
 
+import com.ccjjltx.dao.ActivityDao;
 import com.ccjjltx.dao.GradeDao;
 import com.ccjjltx.dao.UserDao;
+import com.ccjjltx.domain.Activity;
 import com.ccjjltx.domain.User;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
@@ -26,8 +28,11 @@ public class GradeAction extends ActionSupport {
     private GradeDao gradeDao;
     @Resource(name = "userDao")
     private UserDao userDao;
+    @Resource(name = "activityDao")
+    private ActivityDao activityDao;
     private JSONArray result;//返回json数据
     private int aid;//项目主键
+    private List<String> attendUsers;//接受前台传输过来的参与人员名单
 
     public JSONArray getResult() {
         return result;
@@ -43,6 +48,14 @@ public class GradeAction extends ActionSupport {
 
     public void setAid(int aid) {
         this.aid = aid;
+    }
+
+    public List<String> getAttendUsers() {
+        return attendUsers;
+    }
+
+    public void setAttendUsers(List<String> attendUsers) {
+        this.attendUsers = attendUsers;
     }
 
     /**
@@ -68,6 +81,7 @@ public class GradeAction extends ActionSupport {
 
     /**
      * 获得未参与项目的人员
+     *
      * @return json数据
      */
     public String getNoAttendUser() {
@@ -83,6 +97,23 @@ public class GradeAction extends ActionSupport {
             js.put("id", user.getId());
             result.add(js);
         }
+        return SUCCESS;
+    }
+
+    /**
+     * 保存更新
+     *
+     * @return Success
+     */
+    public String saveUpdate() {
+        //先删除aid的所有数据
+        gradeDao.deleteAid(getAid());
+        if (getAttendUsers() == null) {//如果没有数据，表示全部清空，不用执行下面的方法体
+            return SUCCESS;
+        }
+        //得到Activity的数据
+        Activity db_Activity = activityDao.search(getAid());
+        gradeDao.saveUpdate(getAttendUsers(), db_Activity);
         return SUCCESS;
     }
 
