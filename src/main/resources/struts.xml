@@ -62,4 +62,12 @@
         </action>
     </package>
 
+    <!--后端》》活动信息-->
+    <package name="activity" namespace="/activity" extends="struts-default">
+        <!--得到所有的User-->
+        <action name="getAll" class="activityAction" method="getAll">
+            <result name="success">/backstage/home/detail/activity/activity.jsp</result>
+        </action>
+    </package>
+
 </struts>
