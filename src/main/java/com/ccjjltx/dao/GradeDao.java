@@ -128,4 +128,24 @@ public class GradeDao {
         return (List<Grade>) query.list();
     }
 
+    /**
+     * 根据主键得到实例化
+     *
+     * @param gid 主键
+     * @return 实例化
+     */
+    public Grade search(int gid) {
+        Session session = factory.getCurrentSession();
+        return (Grade) session.get(Grade.class, gid);
+    }
+
+    /**
+     * 更新
+     *
+     * @param grade 需要更新的实例化
+     */
+    public void update(Grade grade) {
+        Session session = factory.getCurrentSession();
+        session.update(grade);
+    }
 }
