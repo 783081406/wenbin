@@ -1,6 +1,7 @@
 package com.ccjjltx.dao;
 
 import com.ccjjltx.domain.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,6 +38,17 @@ public class UserDao {
     }
 
     /**
+     * 根据id得到User
+     *
+     * @param id 要查询的id号
+     * @return User实例化
+     */
+    public User searchUser(int id) {
+        Session session = factory.getCurrentSession();
+        return (User) session.get(User.class, id);
+    }
+
+    /**
      * 验证用户名密码正确与否
      *
      * @param username User实例
@@ -66,7 +78,22 @@ public class UserDao {
         return (List<User>) query.list();
     }
 
-
+    /**
+     * 更新信息
+     *
+     * @param user 需要更新的User
+     * @return boolean
+     */
+    public boolean update(User user) {
+        Session session = factory.getCurrentSession();
+        boolean result = true;
+        try {
+            session.update(user);
+        } catch (HibernateException e) {
+            result = false;
+        }
+        return result;
+    }
 
 
 }
