@@ -92,9 +92,12 @@
                 <param name="actionName">getAll</param>
             </result>
         </action>
-
-
-
+        <!--删除操作-->
+        <action name="delete" class="activityAction" method="delete">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getAll</param>
+            </result>
+        </action>
     </package>
 
     <!--后端>>参与活动的人员相关-->
