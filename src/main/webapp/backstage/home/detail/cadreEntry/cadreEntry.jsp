@@ -71,7 +71,7 @@
                 <td align="center"><s:property value="type"/></td>
                 <td>
                     <a href='<%=basePath %>cadreentry/updateUser?id=<s:property value="id"/>&name=<s:property value="name"/>&username=<s:property value="username"/>&password=<s:property value="password"/>&type=<s:property value="type"/>' class="FunctionButton">更新</a>
-                    <a href='' onClick="return delConfirm();"
+                    <a href='<%=basePath %>cadreentry/deleteUser?id=<s:property value="id"/>' onClick="return delConfirm();"
                        class="FunctionButton">删除</a>
                 </td>
             </tr>
