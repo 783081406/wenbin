@@ -54,6 +54,12 @@
                 <param name="actionName">addUser</param>
             </result>
         </action>
+        <!--删除操作操作-->
+        <action name="deleteUser" class="cadreEntryAction" method="deleteUser">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getAllUser</param>
+            </result>
+        </action>
     </package>
 
 </struts>

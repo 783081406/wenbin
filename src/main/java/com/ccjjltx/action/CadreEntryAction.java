@@ -163,4 +163,15 @@ public class CadreEntryAction extends ActionSupport {
         return ERROR;
     }
 
+    /**
+     * 删除操作
+     *
+     * @return delete
+     */
+    public String deleteUser() {
+        //执行删除操作
+        userDao.deleteUser(getId());
+        return SUCCESS;
+    }
+
 }
