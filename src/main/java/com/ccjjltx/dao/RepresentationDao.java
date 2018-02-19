@@ -47,6 +47,25 @@ public class RepresentationDao {
         return (List<Representation>) query.list();
     }
 
+    /**
+     * 根据主键得到实例化
+     *
+     * @param rid 主键
+     * @return 实例化
+     */
+    public Representation search(int rid) {
+        Session session = factory.getCurrentSession();
+        return (Representation) session.get(Representation.class, rid);
+    }
 
+    /**
+     * 更新
+     *
+     * @param representation 需要更新的实例化
+     */
+    public void saveUpdate(Representation representation) {
+        Session session = factory.getCurrentSession();
+        session.update(representation);
+    }
 
 }
