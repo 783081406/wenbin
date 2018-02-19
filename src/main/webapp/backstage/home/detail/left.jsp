@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -122,23 +123,25 @@
             </li>
         </ul>
     </li>
-    <li class="level1">
-        <div onClick="menuClick(this);" class="level1Style">
-            <img src="style/images/func20001.gif" class="Icon"/>
-            部长职权
-        </div>
-        <ul class="MenuLevel2">
-            <li class="level2 level2Style">
-                <a target="right" href="<%=basePath %>cadreentry/getAllUser">干部录入</a>
-            </li>
-            <li class="level2 level2Style">
-                <a target="right" href="<%=basePath %>activity/getAll">活动信息</a>
-            </li>
-            <li class="level2 level2Style">
-                <a target="right" href="<%=basePath %>representation/getAllAll">申请处理</a>
-            </li>
-        </ul>
-    </li>
+    <s:if test="#session.type==2">
+        <li class="level1">
+            <div onClick="menuClick(this);" class="level1Style">
+                <img src="style/images/func20001.gif" class="Icon"/>
+                部长职权
+            </div>
+            <ul class="MenuLevel2">
+                <li class="level2 level2Style">
+                    <a target="right" href="<%=basePath %>cadreentry/getAllUser">干部录入</a>
+                </li>
+                <li class="level2 level2Style">
+                    <a target="right" href="<%=basePath %>activity/getAll">活动信息</a>
+                </li>
+                <li class="level2 level2Style">
+                    <a target="right" href="<%=basePath %>representation/getAllAll">申请处理</a>
+                </li>
+            </ul>
+        </li>
+    </s:if>
 </ul>
 </body>
 </html>

@@ -96,11 +96,13 @@ public class LoginAction extends ActionSupport {
         ActionContext.getContext().getSession().put("userName", getUsername());
         User db_user = userDao.searchUser(getUsername());
         ActionContext.getContext().getSession().put("name", db_user.getName());
+        ActionContext.getContext().getSession().put("type", db_user.getType());
     }
 
     //退出登录删除Session
     public void removeSession() {
         ActionContext.getContext().getSession().remove("userName");
         ActionContext.getContext().getSession().remove("name");
+        ActionContext.getContext().getSession().remove("type");
     }
 }
