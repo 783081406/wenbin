@@ -62,6 +62,18 @@
         </action>
     </package>
 
+    <!--后端》》修改密码-->
+    <package name="user" namespace="/user" extends="struts-default">
+        <action name="update" class="userAction" method="update">
+            <result name="success">/backstage/home/detail/modifyPass/modifyPass.jsp</result>
+        </action>
+        <action name="saveUpdate" class="userAction" method="saveUpdate">
+            <result name="success" type="redirectAction">
+                <param name="actionName">update</param>
+            </result>
+        </action>
+    </package>
+
     <!--后端》》干部录入-->
     <package name="cadreentry" namespace="/cadreentry" extends="struts-default">
         <!--得到所有的User-->
