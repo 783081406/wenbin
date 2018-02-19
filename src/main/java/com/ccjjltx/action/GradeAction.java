@@ -123,11 +123,11 @@ public class GradeAction extends ActionSupport {
      * @return json数据
      */
     public String getNoAttendUser() {
-        List<User> list = userDao.noAttendUser(gradeDao.attendUser(getAid()));
-        if (list == null) {
-            result = null;
-            return SUCCESS;
+        String temp = gradeDao.attendUser(getAid());
+        if (temp == null) {
+            temp = "-1";
         }
+        List<User> list = userDao.noAttendUser(temp);
         result = new JSONArray();
         for (User user : list) {
             JSONObject js = new JSONObject();
