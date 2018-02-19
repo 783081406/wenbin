@@ -2,6 +2,7 @@ package com.ccjjltx.dao;
 
 import com.ccjjltx.domain.Activity;
 import com.ccjjltx.domain.Grade;
+import com.ccjjltx.domain.User;
 import com.ccjjltx.util.ToString;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -112,7 +113,9 @@ public class GradeDao {
      * @param aid         活动项目id
      */
     public void saveUpdate(List<String> attendUsers, int aid) {
-        for (String user : attendUsers) {
+        String temp = attendUsers.get(0);
+        String[] aus = temp.split(",");
+        for (String user : aus) {
             try {
                 save(Integer.parseInt(user), aid);
             } catch (NumberFormatException e) {
@@ -195,5 +198,18 @@ public class GradeDao {
     public void delete(int gid) {
         Session session = factory.getCurrentSession();
         session.delete(search(gid));
+    }
+
+    /**
+     * 得到自己相关的Activity以及分数
+     *
+     * @param user user
+     * @return List列表
+     */
+    public List<Grade> getMeGrade(User user) {
+        Session session = factory.getCurrentSession();
+        String hql = "from Grade grade where grade.user=:user";
+        Query query = session.createQuery(hql).setParameter("user", user);
+        return (List<Grade>) query.list();
     }
 }
