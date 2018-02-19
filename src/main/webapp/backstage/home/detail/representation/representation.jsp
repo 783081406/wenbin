@@ -60,7 +60,7 @@
                 <td align="center"><s:property value="mark"/></td>
                 <td align="center"><s:property value="date"/></td>
                 <td>
-                    <a href='<%=basePath %>representation/addRepresentation?gid=<s:property value="gid"/>'
+                    <a href='<%=basePath %>representation/update?rid=<s:property value="rid"/>&mark=<s:property value="mark"/>&name=<s:property value="grade.activity.name"/>'
                        class="FunctionButton">修改</a>
                 </td>
             </tr>
