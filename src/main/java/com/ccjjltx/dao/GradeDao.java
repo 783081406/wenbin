@@ -74,6 +74,34 @@ public class GradeDao {
     }
 
     /**
+     * 删除id的所有数据
+     *
+     * @param id User主键
+     */
+    public void deleteId(int id) {
+        try {
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("jdbc.properties");
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            String URL = properties.getProperty("url").trim();
+            String USER = properties.getProperty("user").trim();
+            String PASSWORD = properties.getProperty("password").trim();
+            Class.forName("com.mysql.jdbc.Driver");//1.加载驱动程序
+            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            String sql = "DELETE FROM grade WHERE id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 保存修改
      *
      * @param attendUsers 用户id
