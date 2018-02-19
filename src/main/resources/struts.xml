@@ -54,6 +54,12 @@
         <action name="getAllAll" class="representationAction" method="getAllAll">
             <result name="success">/backstage/home/detail/processApplication/processApplication.jsp</result>
         </action>
+        <!--申请处理更新-->
+        <action name="updateProcess" class="representationAction" method="updateProcess">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getAllAll</param>
+            </result>
+        </action>
     </package>
 
     <!--后端》》干部录入-->
