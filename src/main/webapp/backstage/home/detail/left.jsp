@@ -112,7 +112,7 @@
         </div>
         <ul class="MenuLevel2">
             <li class="level2 level2Style">
-                <a target="right" href="#">活动汇总</a>
+                <a target="right" href="<%=basePath %>grade2/getMeGrade">活动汇总</a>
             </li>
             <li class="level2 level2Style">
                 <a target="right" href="#">评分申述</a>
