@@ -21,6 +21,13 @@
         </action>
     </package>
 
+    <!--后端>>活动汇总-->
+    <package name="grade2" namespace="/grade2" extends="struts-default">
+        <action name="getMeGrade" class="grade2Action" method="getMeGrade">
+            <result name="success">/backstage/home/detail/asummary/asummary.jsp</result>
+        </action>
+    </package>
+
     <!--后端》》干部录入-->
     <package name="cadreentry" namespace="/cadreentry" extends="struts-default">
         <!--得到所有的User-->
