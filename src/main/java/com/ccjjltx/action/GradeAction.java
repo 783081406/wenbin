@@ -149,7 +149,7 @@ public class GradeAction extends ActionSupport {
         if (getAttendUsers() == null) {//如果没有数据，表示全部清空，不用执行下面的方法体
             return SUCCESS;
         }
-        gradeDao.saveUpdate(getAttendUsers(), 2);
+        gradeDao.saveUpdate(getAttendUsers(), getAid());
         result = new JSONArray();
         result.add("1");
         return SUCCESS;
