@@ -63,10 +63,12 @@
                 <td align="center"><s:property value="grade.user.name"/></td>
                 <td>
                     <s:if test="sign==1">
-                        <a href='' class="FunctionButton">已处理</a>
+                        <a href=''
+                           class="FunctionButton">已处理</a>
                     </s:if>
                     <s:else>
-                        <a href='' class="FunctionButton">待处理</a>
+                        <a href='<%=basePath%>representation/updateProcess?rid=<s:property value="rid"/>'
+                           class="FunctionButton">待处理</a>
                     </s:else>
                 </td>
             </tr>
