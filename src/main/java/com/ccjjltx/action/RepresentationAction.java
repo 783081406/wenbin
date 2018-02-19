@@ -115,6 +115,11 @@ public class RepresentationAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /**
+     * 更新操作
+     *
+     * @return Success
+     */
     public String saveUpdate() {
         Representation representation = representationDao.search(getRid());
         //更新
@@ -123,4 +128,15 @@ public class RepresentationAction extends ActionSupport {
         representationDao.saveUpdate(representation);
         return SUCCESS;
     }
+
+    /**
+     * 得到所有的数据
+     *
+     * @return List数据
+     */
+    public String getAllAll() {
+        setResult(representationDao.getAllAll());
+        return SUCCESS;
+    }
+
 }

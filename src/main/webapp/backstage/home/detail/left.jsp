@@ -135,7 +135,7 @@
                 <a target="right" href="<%=basePath %>activity/getAll">活动信息</a>
             </li>
             <li class="level2 level2Style">
-                <a target="right" href="#">申请处理</a>
+                <a target="right" href="<%=basePath %>representation/getAllAll">申请处理</a>
             </li>
         </ul>
     </li>
