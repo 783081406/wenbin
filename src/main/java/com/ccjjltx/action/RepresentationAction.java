@@ -33,7 +33,10 @@ public class RepresentationAction extends ActionSupport {
     @Resource(name = "userDao")
     private UserDao userDao;
     private int gid;
-    private List<Representation> result;
+    private List<Representation> result;//存储数据
+    private int rid;
+    private String mark;
+    private String name;
 
     public int getGid() {
         return gid;
@@ -49,6 +52,30 @@ public class RepresentationAction extends ActionSupport {
 
     public void setResult(List<Representation> result) {
         this.result = result;
+    }
+
+    public int getRid() {
+        return rid;
+    }
+
+    public void setRid(int rid) {
+        this.rid = rid;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -76,6 +103,24 @@ public class RepresentationAction extends ActionSupport {
         String userName = (String) ActionContext.getContext().getSession().get("userName");//得到用户名
         User db_user = userDao.searchUser(userName);//得到实例化
         setResult(representationDao.getAll(db_user));//得到本人提交的所有数据
+        return SUCCESS;
+    }
+
+    /**
+     * 更新页面
+     *
+     * @return Success
+     */
+    public String update() {
+        return SUCCESS;
+    }
+
+    public String saveUpdate() {
+        Representation representation = representationDao.search(getRid());
+        //更新
+        representation.setMark(getMark());
+        //执行更新
+        representationDao.saveUpdate(representation);
         return SUCCESS;
     }
 }
