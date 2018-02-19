@@ -17,7 +17,7 @@ public class Grade implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gid;
     private String score;
-    @ManyToOne(targetEntity = User.class)
+    @OneToOne(targetEntity = User.class)
     @JoinColumn(name = "id")
     private User user;
     @ManyToOne(targetEntity = Activity.class)
