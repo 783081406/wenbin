@@ -64,6 +64,8 @@ public class GradeDao {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, aid);
             ps.executeUpdate();
+            ps.close();
+            conn.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -92,6 +94,8 @@ public class GradeDao {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
+            ps.close();
+            conn.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -109,15 +113,19 @@ public class GradeDao {
      */
     public void saveUpdate(List<String> attendUsers, int aid) {
         for (String user : attendUsers) {
-            save(Integer.parseInt(user), aid);
+            try {
+                save(Integer.parseInt(user), aid);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     /**
      * 增加，保存
      *
-     * @param id
-     * @param aid
+     * @param id 用户主键
+     * @param aid 活动信息主键
      */
     private void save(int id, int aid) {
         try {
@@ -134,6 +142,10 @@ public class GradeDao {
             ps.setInt(1, id);
             ps.setInt(2, aid);
             ps.executeUpdate();
+            System.out.println(id);
+            System.out.println(aid);
+            ps.close();
+            conn.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
