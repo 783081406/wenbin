@@ -1,5 +1,6 @@
 package com.ccjjltx.action;
 
+import com.ccjjltx.dao.GradeDao;
 import com.ccjjltx.dao.UserDao;
 import com.ccjjltx.domain.User;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,6 +23,8 @@ public class CadreEntryAction extends ActionSupport {
     //得到UserDAO类
     @Resource(name = "userDao")
     private UserDao userDao;
+    @Resource(name = "gradeDao")
+    private GradeDao gradeDao;
     private List<User> result;//存放所有数据
     private int id;
     private String name;
@@ -169,6 +172,8 @@ public class CadreEntryAction extends ActionSupport {
      * @return delete
      */
     public String deleteUser() {
+        //先删除关联的grade的数据
+        gradeDao.deleteId(getId());
         //执行删除操作
         userDao.deleteUser(getId());
         return SUCCESS;

@@ -1,6 +1,7 @@
 package com.ccjjltx.action;
 
 import com.ccjjltx.dao.ActivityDao;
+import com.ccjjltx.dao.GradeDao;
 import com.ccjjltx.domain.Activity;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.context.annotation.Scope;
@@ -22,6 +23,8 @@ public class ActivityAction extends ActionSupport {
     //得到UserDAO类
     @Resource(name = "activityDao")
     private ActivityDao activityDao;
+    @Resource(name = "gradeDao")
+    private GradeDao gradeDao;
     private List<Activity> result;//存放所有数据
     private int aid;
     private String name;//搜索框提交过来的名字
@@ -168,6 +171,8 @@ public class ActivityAction extends ActionSupport {
     public String delete() {
         //得到需要删除的实例化
         Activity db_activity = activityDao.search(getAid());
+        //先删除关联的grade表的数据
+        gradeDao.deleteAid(getAid());
         //执行删除操作
         activityDao.delete(db_activity);
         return SUCCESS;
