@@ -36,6 +36,10 @@
                 <param name="namespace">/grade2</param>
             </result>
         </action>
+        <!--评分申述页面-->
+        <action name="getAll" class="representationAction" method="getAll">
+            <result name="success">/backstage/home/detail/representation/representation.jsp</result>
+        </action>
     </package>
 
     <!--后端》》干部录入-->
