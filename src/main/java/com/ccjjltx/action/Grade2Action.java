@@ -48,7 +48,6 @@ public class Grade2Action extends ActionSupport {
         User db_user = userDao.searchUser(userName);//得到实例化
         //得到相关的数据
         List<Grade> list = gradeDao.getMeGrade(db_user);
-        System.out.println(list);
         setResult(list);
         return SUCCESS;
     }
