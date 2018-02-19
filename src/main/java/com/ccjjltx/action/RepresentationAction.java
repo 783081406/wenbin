@@ -139,4 +139,15 @@ public class RepresentationAction extends ActionSupport {
         return SUCCESS;
     }
 
+    /**
+     * 更新处理数据
+     *
+     * @return Success
+     */
+    public String updateProcess() {
+        Representation representation = representationDao.search(getRid());//得到实例化
+        representation.setSign(1);//更新
+        representationDao.saveUpdate(representation);//执行更新
+        return SUCCESS;
+    }
 }
