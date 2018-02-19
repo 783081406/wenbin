@@ -124,7 +124,7 @@ public class GradeDao {
     /**
      * 增加，保存
      *
-     * @param id 用户主键
+     * @param id  用户主键
      * @param aid 活动信息主键
      */
     private void save(int id, int aid) {
@@ -142,8 +142,6 @@ public class GradeDao {
             ps.setInt(1, id);
             ps.setInt(2, aid);
             ps.executeUpdate();
-            System.out.println(id);
-            System.out.println(aid);
             ps.close();
             conn.close();
         } catch (ClassNotFoundException e) {
