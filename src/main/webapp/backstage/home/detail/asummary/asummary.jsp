@@ -74,7 +74,8 @@
                 <td align="center"><s:property value="activity.pdfpath"/></td>
                 <td align="center"><s:property value="score"/></td>
                 <td>
-                    <a href='' class="FunctionButton">发起申述</a>
+                    <a href='<%=basePath %>representation/addRepresentation?gid=<s:property value="gid"/>'
+                       class="FunctionButton">发起申述</a>
                 </td>
             </tr>
         </s:iterator>
