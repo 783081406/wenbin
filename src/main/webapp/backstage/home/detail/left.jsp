@@ -118,7 +118,7 @@
                 <a target="right" href="<%=basePath %>representation/getAll">评分申述</a>
             </li>
             <li class="level2 level2Style">
-                <a target="right" href="#">修改密码</a>
+                <a target="right" href="<%=basePath %>user/update">修改密码</a>
             </li>
         </ul>
     </li>
