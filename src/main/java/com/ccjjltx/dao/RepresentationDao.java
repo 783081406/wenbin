@@ -1,12 +1,15 @@
 package com.ccjjltx.dao;
 
 import com.ccjjltx.domain.Representation;
+import com.ccjjltx.domain.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by ccjjltx on 2018/2/19.
@@ -30,6 +33,20 @@ public class RepresentationDao {
         Session session = factory.getCurrentSession();
         session.save(representation);
     }
+
+    /**
+     * 得到本人提交的所有的数据记录
+     *
+     * @param user User实例化
+     * @return List实例化
+     */
+    public List<Representation> getAll(User user) {
+        Session session = factory.getCurrentSession();
+        String hql = "from Representation representation where representation.grade.user=:user";
+        Query query = session.createQuery(hql).setParameter("user", user);
+        return (List<Representation>) query.list();
+    }
+
 
 
 }
