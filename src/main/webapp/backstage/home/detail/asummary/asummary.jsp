@@ -38,14 +38,6 @@
     <div id="TitleArea_End"></div>
 </div>
 
-<!-- 过滤条件 -->
-<div id="QueryArea">
-    <form action="<%=basePath %>cadreentry/searchUser" method="get">
-        <input type="text" name="name" placeholder="请输入活动名">
-        <input type="submit" value="搜索">
-    </form>
-</div>
-
 <!-- 主内容区域（数据列表或表单显示） -->
 <div id="MainArea">
     <table class="MainArea_Content" cellspacing="0" cellpadding="0">
@@ -81,11 +73,6 @@
         </s:iterator>
         </tbody>
     </table>
-
-    <!-- 其他功能超链接 -->
-    <div id="TableTail" align="center">
-        <div class="FunctionButton"><a href="<%=basePath %>cadreentry/addUser">添加</a></div>
-    </div>
 </div>
 </body>
 </html>
