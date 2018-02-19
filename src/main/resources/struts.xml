@@ -28,6 +28,16 @@
         </action>
     </package>
 
+    <!--后端>>申述-->
+    <package name="representation" namespace="/representation" extends="struts-default">
+        <action name="addRepresentation" class="representationAction" method="addRepresentation">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getMeGrade</param>
+                <param name="namespace">/grade2</param>
+            </result>
+        </action>
+    </package>
+
     <!--后端》》干部录入-->
     <package name="cadreentry" namespace="/cadreentry" extends="struts-default">
         <!--得到所有的User-->
