@@ -68,4 +68,15 @@ public class RepresentationDao {
         session.update(representation);
     }
 
+    /**
+     * 得到所有的数据
+     *
+     * @return List集合
+     */
+    public List<Representation> getAllAll() {
+        Session session = factory.getCurrentSession();
+        String hql = "From Representation representation";
+        return (List<Representation>) session.createQuery(hql).list();
+    }
+
 }
