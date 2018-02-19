@@ -40,6 +40,16 @@
         <action name="getAll" class="representationAction" method="getAll">
             <result name="success">/backstage/home/detail/representation/representation.jsp</result>
         </action>
+        <!--更新页面-->
+        <action name="update" class="representationAction" method="update">
+            <result name="success">/backstage/home/detail/representation/representationUpdate.jsp</result>
+        </action>
+        <!--更新操作-->
+        <action name="saveUpdate" class="representationAction" method="saveUpdate">
+            <result name="success" type="redirectAction">
+                <param name="actionName">getAll</param>
+            </result>
+        </action>
     </package>
 
     <!--后端》》干部录入-->
