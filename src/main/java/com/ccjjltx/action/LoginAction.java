@@ -1,6 +1,7 @@
 package com.ccjjltx.action;
 
 import com.ccjjltx.dao.UserDao;
+import com.ccjjltx.domain.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
@@ -93,10 +94,13 @@ public class LoginAction extends ActionSupport {
     //验证通过的时候设置Session
     public void setSession() {
         ActionContext.getContext().getSession().put("userName", getUsername());
+        User db_user = userDao.searchUser(getUsername());
+        ActionContext.getContext().getSession().put("name", db_user.getName());
     }
 
     //退出登录删除Session
     public void removeSession() {
         ActionContext.getContext().getSession().remove("userName");
+        ActionContext.getContext().getSession().remove("name");
     }
 }
